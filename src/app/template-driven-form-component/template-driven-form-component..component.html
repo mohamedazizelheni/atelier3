@@ -1,0 +1,43 @@
+
+
+<form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <!-- Informations personnelles -->
+  <h2>Informations personnelles</h2>
+  <div>
+    <label>Nom :</label>
+    <input type="text" name="name" [(ngModel)]="formData.name" required>
+  </div>
+  <div>
+    <label>Email :</label>
+    <input type="email" name="email" [(ngModel)]="formData.email"  #email="ngModel" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+    
+  </div>
+
+  <!-- Informations de paiement -->
+  <h2>Informations de paiement</h2>
+  <div>
+    <label>Type de carte :</label>
+    <select name="typeOfCard" [(ngModel)]="formData.typeOfCard" required>
+      <option value=""></option>
+      <option value="Visa">Visa</option>
+      <option value="Mastercard">Mastercard</option>
+    </select>
+  </div>
+  <div>
+    <label>Numéro de carte :</label>
+    <input type="text" name="cardNumber" [(ngModel)]="formData.cardNumber" required pattern="[0-9]{16}">
+  </div>
+  <div>
+    <label>Date d'expiration :</label>
+    <input type="text" name="expiration" [(ngModel)]="formData.expiration" required>
+  </div>
+  <div>
+    <label>Code :</label>
+    <input type="password" name="cvv" [(ngModel)]="formData.cvv"required >
+  </div>
+
+  <!-- Bouton de soumission -->
+  <button type="submit" [disabled]="!form.valid">Ajouter</button>
+
+</form>
